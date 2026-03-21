@@ -1,6 +1,5 @@
 const requiredEnvVars = [
   'NEXT_PUBLIC_API_BASE_URL',
-  'NEXT_PUBLIC_GOOGLE_LOGIN_PATH',
   'NEXT_PUBLIC_KAKAO_LOGIN_PATH',
 ] as const;
 
@@ -20,6 +19,5 @@ validateEnv();
 
 export const env = {
   apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL as string,
-  googleLoginPath: process.env.NEXT_PUBLIC_GOOGLE_LOGIN_PATH as string,
   kakaoLoginPath: process.env.NEXT_PUBLIC_KAKAO_LOGIN_PATH as string,
 } as const;
