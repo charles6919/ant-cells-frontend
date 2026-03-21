@@ -5,3 +5,6 @@ export const isAuthenticated = (state: AuthState): boolean =>
 
 export const isLoading = (state: AuthState): boolean =>
   state.status === 'LOADING';
+
+export const isTemporaryAuth = (state: AuthState): boolean =>
+  state.status === 'TEMPORARY_AUTH';
