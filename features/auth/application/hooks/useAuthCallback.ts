@@ -21,7 +21,8 @@ export function useAuthCallback() {
           router.replace('/login');
           return;
         }
-        const { user, is_registered } = result;
+        const { is_registered, nickname, email } = result;
+        const user = { id: '', nickname, email };
         if (!is_registered) {
           setAuthState({ status: 'TEMPORARY_AUTH', user });
           router.replace('/terms');
