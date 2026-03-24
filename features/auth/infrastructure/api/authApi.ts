@@ -1,10 +1,10 @@
 import { httpClient } from '@/infrastructure/http/httpClient';
 import { env } from '@/infrastructure/config/env';
-import { AuthUser } from '../../domain/model/authUser';
 
 export interface MeResponse {
-  user: AuthUser;
   is_registered: boolean;
+  nickname: string;
+  email: string;
 }
 
 export const authApi = {
