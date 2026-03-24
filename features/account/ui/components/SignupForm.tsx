@@ -1,5 +1,5 @@
 import TextField from '@/ui/components/TextField';
-import { signupPageStyles } from '../signupPageStyles';
+import { signupPageStyles as s } from '../signupPageStyles';
 
 interface SignupFormProps {
   email: string;
@@ -19,15 +19,10 @@ export default function SignupForm({
   onSubmit,
 }: SignupFormProps) {
   return (
-    <div className={signupPageStyles.form}>
-      <div className="flex flex-col gap-1">
-        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">이메일</span>
-        <input
-          type="email"
-          readOnly
-          value={email}
-          className={signupPageStyles.readonlyInput}
-        />
+    <div className={s.form}>
+      <div className={s.fieldWrapper}>
+        <span className={s.fieldLabel}>이메일</span>
+        <input type="email" readOnly value={email} className={s.readonlyInput} />
       </div>
       <TextField
         id="nickname"
@@ -36,9 +31,10 @@ export default function SignupForm({
         onChange={onNicknameChange}
         error={error ?? undefined}
         type="text"
+        placeholder="사용할 닉네임을 입력하세요"
       />
       <button
-        className={signupPageStyles.submitButton}
+        className={s.submitButton}
         disabled={isSubmitting || !nickname.trim()}
         onClick={onSubmit}
       >

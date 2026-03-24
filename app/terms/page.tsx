@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { authAtom } from '@/features/auth/application/atoms/authAtom';
 import TermList from '@/features/terms/ui/components/TermList';
-import { termsPageStyles } from '@/features/terms/ui/termsPageStyles';
+import { termsPageStyles as s } from '@/features/terms/ui/termsPageStyles';
 import { useTermConsent } from '@/features/terms/application/hooks/useTermConsent';
 
 export default function TermsPage() {
@@ -24,23 +24,23 @@ export default function TermsPage() {
   }
 
   return (
-    <div className={termsPageStyles.container}>
-      <div className={termsPageStyles.card}>
-        <h1 className={termsPageStyles.title}>약관 동의</h1>
+    <div className={s.page}>
+      <div className={s.header}>
+        <div className={s.logoMark}>AC</div>
+        <h1 className={s.title}>서비스 이용약관</h1>
+        <p className={s.subtitle}>계속하려면 약관에 동의하세요</p>
+      </div>
+      <div className={s.card}>
         <TermList showConditionalTerms={false} />
         <button
           disabled={!areAllRequiredChecked}
-          className={
-            areAllRequiredChecked
-              ? termsPageStyles.submitButton
-              : termsPageStyles.submitButtonDisabled
-          }
+          className={areAllRequiredChecked ? s.submitButton : s.submitButtonDisabled}
           onClick={() => {
             acceptTerms();
             router.push('/account/signup');
           }}
         >
-          동의하고 시작하기
+          동의하고 계속하기
         </button>
       </div>
     </div>
