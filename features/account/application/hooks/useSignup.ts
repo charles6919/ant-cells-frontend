@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useAtomValue } from 'jotai';
+import { useAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { authAtom } from '@/features/auth/application/atoms/authAtom';
 import { accountApi } from '../../infrastructure/api/accountApi';
 
 export function useSignup() {
-  const authState = useAtomValue(authAtom);
+  const [authState, setAuthState] = useAtom(authAtom);
   const router = useRouter();
 
   const user = authState.status === 'TEMPORARY_AUTH' ? authState.user : null;
@@ -22,6 +22,7 @@ export function useSignup() {
     setError(null);
     try {
       await accountApi.signup({ nickname, email: user.email });
+      setAuthState({ status: 'AUTHENTICATED', user: { ...user, nickname } });
       router.push('/');
     } catch {
       setError('회원가입에 실패했습니다. 다시 시도해주세요.');

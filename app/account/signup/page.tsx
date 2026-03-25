@@ -7,7 +7,7 @@ import { authAtom } from '@/features/auth/application/atoms/authAtom';
 import { acceptedTermsAtom } from '@/features/terms/application/atoms/acceptedTermsAtom';
 import { useSignup } from '@/features/account/application/hooks/useSignup';
 import SignupForm from '@/features/account/ui/components/SignupForm';
-import { signupPageStyles } from '@/features/account/ui/signupPageStyles';
+import { signupPageStyles as s } from '@/features/account/ui/signupPageStyles';
 
 export default function SignupPage() {
   const authState = useAtomValue(authAtom);
@@ -31,9 +31,13 @@ export default function SignupPage() {
   }
 
   return (
-    <div className={signupPageStyles.container}>
-      <div className={signupPageStyles.card}>
-        <h1 className={signupPageStyles.title}>회원가입</h1>
+    <div className={s.page}>
+      <div className={s.header}>
+        <div className={s.logoMark}>AC</div>
+        <h1 className={s.title}>회원가입</h1>
+        <p className={s.subtitle}>사용할 닉네임을 설정하세요</p>
+      </div>
+      <div className={s.card}>
         <SignupForm
           email={email}
           nickname={nickname}

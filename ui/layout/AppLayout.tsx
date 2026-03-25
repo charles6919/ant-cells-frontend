@@ -12,7 +12,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         isAuthenticated={isAuthenticated}
         onLogout={() => dispatch({ type: 'LOGOUT' })}
       />
-      <main className="pt-16">{children}</main>
+      <main className="pt-14">{children}</main>
     </>
   );
 }
