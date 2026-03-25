@@ -7,5 +7,5 @@ export const boardApi = {
     httpClient.get<BoardListResponse>(`/board/list?page=${page}&size=${size}`),
 
   create: (title: string, content: string) =>
-    httpClient.post<BoardCreateResponse>('/board', { title, content }),
+    httpClient.post<BoardCreateResponse>('/board/register', { title, content }),
 };
