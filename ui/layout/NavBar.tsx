@@ -2,12 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { navBarStyles as s } from './navBarStyles';
+import { navBarStyles } from './navBarStyles';
 
 const menuItems = [
   { label: 'Home', href: '/' },
-  { label: 'Board', href: '/board' },
-  { label: 'Youtube', href: '/youtube' },
 ];
 
 interface NavBarProps {
@@ -19,33 +17,29 @@ export default function NavBar({ isAuthenticated = false, onLogout }: NavBarProp
   const pathname = usePathname();
 
   return (
-    <nav className={s.nav}>
-      <div className={s.inner}>
-        <Link href="/" className={s.logo}>
-          <span className={s.logoMark}>AC</span>
-          <span className={s.logoText}>Ant Cells</span>
-          <span className={s.logoBadge}>투자정보</span>
-        </Link>
-
-        <div className={s.menuList}>
-          {menuItems.map(({ label, href }) => (
-            <Link key={href} href={href} className={s.menuItem(pathname === href)}>
-              {label}
-            </Link>
-          ))}
-        </div>
-
-        <div className={s.actions}>
-          {isAuthenticated ? (
-            <button className={s.logoutButton} onClick={onLogout}>
-              로그아웃
-            </button>
-          ) : (
-            <Link href="/login" className={s.loginButton}>
-              로그인
-            </Link>
-          )}
-        </div>
+    <nav className={navBarStyles.nav}>
+      <Link href="/" className={navBarStyles.logo}>
+        Ant Cells
+      </Link>
+      <div className={navBarStyles.menuList}>
+        {menuItems.map(({ label, href }) => (
+          <Link
+            key={href}
+            href={href}
+            className={navBarStyles.menuItem(pathname === href)}
+          >
+            {label}
+          </Link>
+        ))}
+        {isAuthenticated ? (
+          <button className={navBarStyles.logoutButton} onClick={onLogout}>
+            Logout
+          </button>
+        ) : (
+          <Link href="/login" className={navBarStyles.loginButton}>
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );
