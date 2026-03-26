@@ -51,6 +51,19 @@ export const boardPageStyles = {
       : 'inline-flex items-center rounded-xl bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-indigo-500/20 transition-all hover:bg-indigo-500 active:scale-[0.98] dark:bg-indigo-500 dark:hover:bg-indigo-400',
   createErrorBox: 'rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-600 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-400',
 
+  // Read Page
+  readHeader: 'border-b border-zinc-100 px-6 py-6 dark:border-white/5',
+  readTitle: 'text-xl font-bold text-zinc-900 dark:text-zinc-50',
+  readMeta: 'mt-2 flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-600',
+  readMetaDot: 'text-zinc-300 dark:text-zinc-700',
+  readBody: 'px-6 py-6',
+  readContent: 'whitespace-pre-wrap text-sm leading-7 text-zinc-700 dark:text-zinc-300',
+  readActions: 'flex items-center justify-between border-t border-zinc-100 px-6 py-4 dark:border-white/5',
+  readActionRight: 'flex items-center gap-2',
+  readListButton: 'inline-flex items-center rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5',
+  readEditButton: 'inline-flex items-center rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5',
+  readDeleteButton: 'inline-flex items-center rounded-xl bg-rose-50 px-4 py-2 text-sm font-medium text-rose-600 transition-colors hover:bg-rose-100 dark:bg-rose-500/10 dark:text-rose-400 dark:hover:bg-rose-500/20',
+
   // Pagination
   paginationWrapper: 'flex items-center justify-between border-t border-zinc-100/80 px-5 py-3.5 dark:border-white/[0.04]',
   paginationInfo: 'text-xs text-zinc-400 dark:text-zinc-600',

@@ -1,5 +1,5 @@
 export interface BoardListItem {
-  board_id: number;
+  board_id: string;
   title: string;
   nickname: string;
   created_at: string;
