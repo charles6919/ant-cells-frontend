@@ -29,9 +29,9 @@ export function useBoardList() {
         setState({
           status: 'SUCCESS',
           boards,
-          total: result.total,
-          page: result.page,
-          size: result.size,
+          total: result.total ?? boards.length,
+          page: result.page ?? page,
+          size: result.size ?? PAGE_SIZE,
         });
       })
       .catch((error) => {

@@ -1,4 +1,4 @@
-export interface BoardCreateResponse {
+export interface BoardReadResponse {
   board_id: string;
   title: string;
   content: string;
