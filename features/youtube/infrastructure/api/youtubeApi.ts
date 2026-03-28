@@ -4,4 +4,5 @@ import { YoutubeListResponse } from '../../domain/model/youtubeListResponse';
 export const youtubeApi = {
   getList: (page: number = 1) =>
     httpClient.get<YoutubeListResponse>(`/youtube/list?page=${page}`),
+  collect: () => httpClient.post<{ saved_count: number }>('/youtube/collect'),
 };

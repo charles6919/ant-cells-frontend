@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { youtubeApi } from '../../infrastructure/api/youtubeApi';
 import { YoutubeListState } from '../../domain/state/youtubeListState';
 import { YoutubeVideo } from '../../domain/model/youtubeVideo';
@@ -9,12 +9,19 @@ import { HttpError } from '@/infrastructure/http/httpClient';
 export function useYoutubeList() {
   const [state, setState] = useState<YoutubeListState>({ status: 'LOADING' });
   const [page, setPage] = useState(1);
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
     setState({ status: 'LOADING' });
-    youtubeApi
-      .getList(page)
-      .then((result) => {
+
+    const load = async () => {
+      if (isFirstLoad.current) {
+        isFirstLoad.current = false;
+        await youtubeApi.collect().catch(() => {});
+      }
+
+      try {
+        const result = await youtubeApi.getList(page);
         if (!result || result.items.length === 0) {
           setState({ status: 'EMPTY', message: '등록된 영상이 없습니다.' });
           return;
@@ -34,14 +41,16 @@ export function useYoutubeList() {
           nextPageToken: result.next_page_token,
           prevPageToken: result.prev_page_token,
         });
-      })
-      .catch((error) => {
+      } catch (error) {
         if (error instanceof HttpError && error.status === 404) {
           setState({ status: 'EMPTY', message: '등록된 영상이 없습니다.' });
         } else {
           setState({ status: 'ERROR', message: '영상 목록을 불러오는 데 실패했습니다.' });
         }
-      });
+      }
+    };
+
+    load();
   }, [page]);
 
   const handlePageChange = (newPage: number) => {
