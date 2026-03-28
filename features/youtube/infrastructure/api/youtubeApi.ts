@@ -1,7 +1,7 @@
 import { httpClient } from '@/infrastructure/http/httpClient';
-import { VideoListResponse } from '../../domain/model/videoListResponse';
+import { YoutubeListResponse } from '../../domain/model/youtubeListResponse';
 
 export const youtubeApi = {
-  getList: (page: number, size: number) =>
-    httpClient.get<VideoListResponse>(`/youtube/list?page=${page}&size=${size}`),
+  getList: (page: number = 1) =>
+    httpClient.get<YoutubeListResponse>(`/youtube/list?page=${page}`),
 };
