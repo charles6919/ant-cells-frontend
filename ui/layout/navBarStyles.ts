@@ -15,5 +15,6 @@ export const navBarStyles = {
 
   actions: 'flex items-center gap-2',
   loginButton: 'inline-flex h-8 items-center justify-center rounded-lg bg-indigo-600 px-4 text-xs font-semibold text-white shadow-sm shadow-indigo-500/20 transition-colors hover:bg-indigo-700',
+  myPageButton: 'inline-flex h-8 items-center justify-center rounded-lg border border-indigo-200 px-4 text-xs font-medium text-indigo-600 transition-colors hover:bg-indigo-50 dark:border-indigo-500/30 dark:text-indigo-400 dark:hover:bg-indigo-500/10',
   logoutButton: 'inline-flex h-8 items-center justify-center rounded-lg border border-zinc-200 px-4 text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5',
 };

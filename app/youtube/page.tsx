@@ -5,11 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/features/auth/application/hooks/useAuth';
 import { useYoutubeList } from '@/features/youtube/application/hooks/useYoutubeList';
 import { YoutubeList } from '@/features/youtube/ui/components/YoutubeList';
+import { InterestThemeTags } from '@/features/youtube/ui/components/InterestStockTags';
 import { youtubePageStyles as s } from '@/features/youtube/ui/youtubePageStyles';
 
 export default function YoutubePage() {
   const { authState } = useAuth();
-  const { state, page, setPage } = useYoutubeList();
+  const { state, page, setPage, interestThemes, hasInterestThemes } = useYoutubeList();
   const router = useRouter();
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function YoutubePage() {
             <span className={s.titleSub}>Youtube</span>
           </h1>
         </div>
+        <InterestThemeTags themes={interestThemes} hasInterestThemes={hasInterestThemes} />
         <YoutubeList state={state} page={page} onPageChange={setPage} />
       </div>
     </div>

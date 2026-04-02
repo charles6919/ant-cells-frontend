@@ -1,5 +1,10 @@
+export interface QaPair {
+  question: string;
+  answer: string;
+}
+
 export type MarketAnalysisState =
   | { status: 'IDLE' }
-  | { status: 'LOADING' }
-  | { status: 'SUCCESS'; question: string; answer: string }
-  | { status: 'ERROR'; message: string };
+  | { status: 'LOADING'; history: QaPair[] }
+  | { status: 'SUCCESS'; history: QaPair[] }
+  | { status: 'ERROR'; message: string; history: QaPair[] };

@@ -33,4 +33,10 @@ export const youtubePageStyles = {
     }`,
   pageNavButton:
     'px-3 h-8 text-xs rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors',
+
+  interestGuide: 'mb-4 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-600',
+  interestTagSection: 'mb-4 flex items-center gap-3',
+  interestLabel: 'shrink-0 text-xs font-medium text-gray-500',
+  interestTagList: 'flex flex-wrap gap-2',
+  interestTag: 'rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600',
 };

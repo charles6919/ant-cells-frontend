@@ -5,6 +5,8 @@ export const signupPageStyles = {
   title: 'text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50',
   subtitle: 'text-sm text-zinc-500 dark:text-zinc-400',
   card: 'w-full max-w-sm rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-[#0f0f1a]',
+  cardWide: 'w-full max-w-md rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-[#0f0f1a]',
+  stepIndicator: 'mt-1 text-xs font-medium text-indigo-500 dark:text-indigo-400',
   form: 'flex flex-col gap-4',
   fieldWrapper: 'flex flex-col gap-1.5',
   fieldLabel: 'text-xs font-medium text-zinc-600 dark:text-zinc-400',

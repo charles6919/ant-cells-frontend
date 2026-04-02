@@ -6,8 +6,7 @@ interface SignupFormProps {
   nickname: string;
   onNicknameChange: (value: string) => void;
   error: string | null;
-  isSubmitting: boolean;
-  onSubmit: () => void;
+  onNext: () => void;
 }
 
 export default function SignupForm({
@@ -15,8 +14,7 @@ export default function SignupForm({
   nickname,
   onNicknameChange,
   error,
-  isSubmitting,
-  onSubmit,
+  onNext,
 }: SignupFormProps) {
   return (
     <div className={s.form}>
@@ -35,10 +33,10 @@ export default function SignupForm({
       />
       <button
         className={s.submitButton}
-        disabled={isSubmitting || !nickname.trim()}
-        onClick={onSubmit}
+        disabled={!nickname.trim()}
+        onClick={onNext}
       >
-        {isSubmitting ? '가입 중...' : '가입하기'}
+        다음
       </button>
     </div>
   );

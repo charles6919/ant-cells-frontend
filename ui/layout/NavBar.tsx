@@ -38,9 +38,14 @@ export default function NavBar({ isAuthenticated = false, onLogout }: NavBarProp
 
         <div className={s.actions}>
           {isAuthenticated ? (
-            <button className={s.logoutButton} onClick={onLogout}>
-              로그아웃
-            </button>
+            <>
+              <Link href="/mypage" className={s.myPageButton}>
+                마이페이지
+              </Link>
+              <button className={s.logoutButton} onClick={onLogout}>
+                로그아웃
+              </button>
+            </>
           ) : (
             <Link href="/login" className={s.loginButton}>
               로그인

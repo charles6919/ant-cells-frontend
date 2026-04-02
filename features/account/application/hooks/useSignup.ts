@@ -6,22 +6,33 @@ import { useRouter } from 'next/navigation';
 import { authAtom } from '@/features/auth/application/atoms/authAtom';
 import { accountApi } from '../../infrastructure/api/accountApi';
 
+type SignupStep = 'nickname' | 'themes';
+
 export function useSignup() {
   const [authState, setAuthState] = useAtom(authAtom);
   const router = useRouter();
 
   const user = authState.status === 'TEMPORARY_AUTH' ? authState.user : null;
 
+  const [step, setStep] = useState<SignupStep>('nickname');
   const [nickname, setNickname] = useState(user?.nickname ?? '');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = async () => {
+  const goToThemeStep = () => {
+    setStep('themes');
+  };
+
+  const submit = async (interestThemeSeqs: number[] = []) => {
     if (!user) return;
     setIsSubmitting(true);
     setError(null);
     try {
-      await accountApi.signup({ nickname, email: user.email });
+      await accountApi.signup({
+        nickname,
+        email: user.email,
+        interest_theme_seqs: interestThemeSeqs.length > 0 ? interestThemeSeqs : undefined,
+      });
       setAuthState({ status: 'AUTHENTICATED', user: { ...user, nickname } });
       router.push('/');
     } catch {
@@ -32,11 +43,13 @@ export function useSignup() {
   };
 
   return {
+    step,
     email: user?.email ?? '',
     nickname,
     setNickname,
     error,
     isSubmitting,
+    goToThemeStep,
     submit,
   };
 }
